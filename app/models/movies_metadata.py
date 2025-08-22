@@ -4,9 +4,11 @@ from typing import Optional, TYPE_CHECKING
 from sqlalchemy import BigInteger, Boolean, Date, Float, Integer, String, Text
 from sqlalchemy.dialects.postgresql import JSONB
 from sqlalchemy.orm import Mapped, mapped_column, relationship
-from app.db.session import Base
+from db.session import Base  # Mudança aqui: era "app.db.session"
 if TYPE_CHECKING:  # for type checkers only (avoids runtime circular import)
-    from app.models.credits import Credits
+    from models.credits import Credits  # Mudança aqui: era "app.models.credits"
+
+# ... resto do código permanece igual ...
 
 
 class MoviesMetadata(Base):

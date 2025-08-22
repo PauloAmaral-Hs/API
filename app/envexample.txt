@@ -11,11 +11,8 @@ RUN apt-get update && apt-get install -y \
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Copy the entire app directory structure
+# Copy application code
 COPY . .
-
-# Set Python path to include the parent directory
-ENV PYTHONPATH=/app/..
 
 # Expose port
 EXPOSE 8000

@@ -1,0 +1,37 @@
+version: '3.8'
+
+services:
+  movies-api:
+    build: .
+    ports:
+      - "8000:8000"
+    environment:
+      - DATABASE_URL=postgresql://postgres:1327a373e68cc300f1c5@easypanel.healthsafetytech.com:8000/ai_agents
+      - DEBUG=True
+      - PYTHONPATH=/app
+    # Removemos o volume para não sobrescrever o código copiado
+    restart: unless-stopped
+    networks:
+      - movies-network
+
+networks:
+  movies-network:
+    driver: bridge
+
+# Executar em background
+# docker-compose up -d
+
+# Ver status dos containers
+#docker-compose ps
+
+# Parar todos os serviços
+#docker-compose down
+
+# Reconstruir e executar (útil para mudanças no código)
+#docker-compose up --build
+
+# Ver logs de um serviço específico
+#docker-compose logs movies-api
+
+# Executar comandos dentro do container
+#docker-compose exec movies-api bash
